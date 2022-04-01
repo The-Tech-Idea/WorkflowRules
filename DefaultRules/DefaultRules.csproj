@@ -4,9 +4,9 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>TheTechIdea.Beep.Workflow.DefaultRules</RootNamespace>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <PackageId>TheTechIdea.Beep.Workflow.DefaultRules</PackageId>
+    <PackageId>TheTechIdea.Beep.Workflow.Rules</PackageId>
     <Authors>The Tech Idea</Authors>
-    <Product>TheTechIdea.Beep.Workflow.DefaultRules</Product>
+    <Product>TheTechIdea.Beep.Workflow.Rules</Product>
     <Description>Default Rules for Beep Data Management Engine</Description>
     <Copyright>2022</Copyright>
     <PackageIcon>SimpleODM.png</PackageIcon>
