@@ -11,8 +11,8 @@
     <Copyright>2022</Copyright>
     <PackageIcon>SimpleODM.png</PackageIcon>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/The-Tech-Idea/TheTechIdea.Beep.Workflow.Rules</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/The-Tech-Idea/TheTechIdea.Beep.Workflow.Rules</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/The-Tech-Idea/WorkflowRules</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/The-Tech-Idea/WorkflowRules</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,6 +20,10 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="TheTechIdea.Beep.DataManagementEngine2.0" Version="1.0.0.5" />
   </ItemGroup>
 
 </Project>
