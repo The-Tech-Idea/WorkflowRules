@@ -11,6 +11,8 @@
     <Copyright>2022</Copyright>
     <PackageIcon>SimpleODM.png</PackageIcon>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/The-Tech-Idea/TheTechIdea.Beep.Workflow.Rules</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/The-Tech-Idea/TheTechIdea.Beep.Workflow.Rules</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
