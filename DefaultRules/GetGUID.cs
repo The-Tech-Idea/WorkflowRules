@@ -7,9 +7,9 @@ using TheTechIdea.Beep.Vis;
 using TheTechIdea.DataManagment_Engine.Workflow.Interfaces;
 using TheTechIdea.Util;
 
-namespace TheTechIdea.Beep.Workflow
+namespace TheTechIdea.Beep.Workflow.DefaultRules
 {
-    [AddinAttribute(Caption = "Default GUID", Name = "GUID", misc = "Defaults", addinType = AddinType.Class, returndataTypename = "string")]
+    [Addin(Caption = "Default GUID", Name = "GUID", misc = "Defaults", addinType = AddinType.Class, returndataTypename = "string")]
     public class GetGUID : IWorkFlowRule
     {
         public GetGUID(IDMEEditor pDMEEditor)
@@ -39,13 +39,13 @@ namespace TheTechIdea.Beep.Workflow
                     List<DefaultValue> defaults = DMEEditor.ConfigEditor.DataConnections[DMEEditor.ConfigEditor.DataConnections.FindIndex(i => i.ConnectionName == args.DatasourceName)].DatasourceDefaults;
                     if (defaults != null)
                     {
-                        if (rule!=null)
+                        if (rule != null)
                         {
                             DefaultValue defaultValue = defaults.Where(p => string.Equals(p.Rule, rule.Rulename, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
                             if (defaultValue != null)
                             {
                                 Guid g = Guid.NewGuid();
-                                
+
                                 args.ParameterString2 = g.ToString("N");
                                 DMEEditor.Passedarguments.ReturnData = args.ParameterString2;
                                 DMEEditor.Passedarguments.ReturnType = args.ParameterString2.GetType();
@@ -56,7 +56,7 @@ namespace TheTechIdea.Beep.Workflow
             }
             return (PassedArgs)DMEEditor.Passedarguments;
         }
-       
+
 
     }
 }

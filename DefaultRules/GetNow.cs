@@ -7,9 +7,9 @@ using TheTechIdea.Beep.Vis;
 using TheTechIdea.DataManagment_Engine.Workflow.Interfaces;
 using TheTechIdea.Util;
 
-namespace TheTechIdea.Beep.Workflow
+namespace TheTechIdea.Beep.Workflow.DefaultRules
 {
-    [AddinAttribute(Caption = "Default Now", Name = "Now", misc = "Defaults", addinType = AddinType.Class, returndataTypename = "string")]
+    [Addin(Caption = "Default Now", Name = "Now", misc = "Defaults", addinType = AddinType.Class, returndataTypename = "string")]
     public class GetNow : IWorkFlowRule
     {
         public GetNow(IDMEEditor pDMEEditor)
@@ -38,27 +38,27 @@ namespace TheTechIdea.Beep.Workflow
                 {
                     List<DefaultValue> defaults = DMEEditor.ConfigEditor.DataConnections[DMEEditor.ConfigEditor.DataConnections.FindIndex(i => i.ConnectionName == args.DatasourceName)].DatasourceDefaults;
                     if (defaults != null)
+                    {
+                        if (rule != null)
                         {
-                            if (rule != null)
+                            DefaultValue defaultValue = defaults.Where(p => string.Equals(p.Rule, rule.Rulename, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+                            if (defaultValue != null)
                             {
-                                DefaultValue defaultValue = defaults.Where(p => string.Equals(p.Rule, rule.Rulename, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
-                                if (defaultValue != null)
+                                if (rule.Expression != null)
                                 {
-                                    if (rule.Expression != null)
-                                        {
-                                            args.ParameterString2 = DateTime.Now.ToString(args.ParameterString3);
-                                        }
-                                    else
-                                       args.ParameterDate1 =DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"));
-                                    DMEEditor.Passedarguments.ReturnData = args.ParameterDate1;
-                                    DMEEditor.Passedarguments.ReturnType = args.ParameterDate1.GetType();
+                                    args.ParameterString2 = DateTime.Now.ToString(args.ParameterString3);
                                 }
+                                else
+                                    args.ParameterDate1 = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"));
+                                DMEEditor.Passedarguments.ReturnData = args.ParameterDate1;
+                                DMEEditor.Passedarguments.ReturnType = args.ParameterDate1.GetType();
                             }
                         }
+                    }
                 }
             }
             return (PassedArgs)DMEEditor.Passedarguments;
         }
-       
+
     }
 }

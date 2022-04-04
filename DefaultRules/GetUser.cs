@@ -7,9 +7,9 @@ using TheTechIdea.Beep.Vis;
 using TheTechIdea.DataManagment_Engine.Workflow.Interfaces;
 using TheTechIdea.Util;
 
-namespace TheTechIdea.Beep.Workflow
+namespace TheTechIdea.Beep.Workflow.DefaultRules
 {
-    [AddinAttribute(Caption = "Default User", Name = "User", misc = "Defaults", addinType = AddinType.Class, returndataTypename = "string")]
+    [Addin(Caption = "Default User", Name = "User", misc = "Defaults", addinType = AddinType.Class, returndataTypename = "string")]
     public class GetUser : IWorkFlowRule
     {
         public GetUser(IDMEEditor pDMEEditor)
@@ -27,7 +27,7 @@ namespace TheTechIdea.Beep.Workflow
         public event EventHandler<IWorkFlowEventArgs> WorkFlowRuleEnded;
         public event EventHandler<IWorkFlowEventArgs> WorkFlowRuleRunning;
 
-        public PassedArgs ExecuteRule(PassedArgs args,IRuleStructure rule)
+        public PassedArgs ExecuteRule(PassedArgs args, IRuleStructure rule)
         {
             if (args != null)
             {
@@ -39,21 +39,21 @@ namespace TheTechIdea.Beep.Workflow
                     List<DefaultValue> defaults = DMEEditor.ConfigEditor.DataConnections[DMEEditor.ConfigEditor.DataConnections.FindIndex(i => i.ConnectionName == args.DatasourceName)].DatasourceDefaults;
                     if (defaults != null)
                     {
-                       if (rule != null)
-                       {
-                          DefaultValue defaultValue = defaults.Where(p => string.Equals(p.Rule, rule.Rulename, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
-                          if (defaultValue != null)
-                          {
-                             args.ParameterString2 = Environment.UserName;
-                             DMEEditor.Passedarguments.ReturnData = args.ParameterString2;
-                             DMEEditor.Passedarguments.ReturnType = args.ParameterString2.GetType();
-                          }
-                       }
+                        if (rule != null)
+                        {
+                            DefaultValue defaultValue = defaults.Where(p => string.Equals(p.Rule, rule.Rulename, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+                            if (defaultValue != null)
+                            {
+                                args.ParameterString2 = Environment.UserName;
+                                DMEEditor.Passedarguments.ReturnData = args.ParameterString2;
+                                DMEEditor.Passedarguments.ReturnType = args.ParameterString2.GetType();
+                            }
+                        }
                     }
                 }
             }
             return (PassedArgs)DMEEditor.Passedarguments;
         }
-       
+
     }
 }
