@@ -13,6 +13,7 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/The-Tech-Idea/WorkflowRules</PackageProjectUrl>
     <RepositoryUrl>https://github.com/The-Tech-Idea/WorkflowRules</RepositoryUrl>
+    <Version>1.0.0.1</Version>
   </PropertyGroup>
 	<Target Name="CopyPackage" AfterTargets="Pack">
 		<Copy SourceFiles="$(OutputPath)..\$(PackageId).$(PackageVersion).nupkg" DestinationFolder="C:\Users\f_ald\source\repos\Nuget.Local" />
@@ -26,7 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="TheTechIdea.Beep.DataManagementEngine2.0" Version="1.0.0.5" />
+    <PackageReference Include="TheTechIdea.Beep.DataManagementEngine2.0" Version="1.0.0.14" />
   </ItemGroup>
 
 </Project>
